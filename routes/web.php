@@ -36,3 +36,5 @@ Route::controller(LocationController::class)->group(function(){
     Route::get('search', 'index');
     Route::get('search', 'search');
 });
+
+Route::get('/home/search',[App\Http\Controllers\LocationController::class, 'search']);

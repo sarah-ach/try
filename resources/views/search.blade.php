@@ -17,162 +17,82 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     @vite(['resources/js/app.js'])
-</head>
-<body>
-  <div class="row">
-  <div class="col-lg-6 grid-margin stretch-card mt-4">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title ">Opération</h4>
+
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         
-        <div class="content-wrapper d-flex align-items-center justify-content-center auth theme-one" style="background-image: url({{ url('assets/images/auth/register.jpg') }}); background-size: cover;">
-  <div class="row w-100">
-    <div class="col-lg-4 mx-auto">
-      <div class="auto-form-wrapper" onload="document.pos.barcode.focus();">
-        
-          <div class="form-group mt-4">
-            <div class="input-group-append">
-            <form method="POST" action="{{url('/search')}}">
-            {{ csrf_field() }}
-            <div class="input-group">
-              
-              <div class="row justify-content-center">
-       
-             
-<div class="media-body">
+    </head>
+    <body>
 
-          </div>
-          <div class="input-group mt-4">
-              <input type="search" id="wireName" name="search" class="form-control mt-4 @error('search') is-invalid @enderror" placeholder="splace name" style="width: 16rem;" />
-                @error('circuit')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-                </div>
-                <div class="form-group mt-4">
-
-            <div class="input-group">
-            
-            <div class="mycard m-1 p-1 mt-4 "  >
-                <textarea id="location" type="text" class=" form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" style="width: 16rem;" placeholder="Location">
-                </textarea>
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-
-            </div>
-            </div>
-            
-
-            <div class="input-group mt-4">
-
-                <input style="width: 16rem;"  id="scan_loc" type="text" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" required autocomplete="new-password" placeholder="Scan-location">
-                @error('password_confirmation')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-              
-            
-          <div class="form-group mt-4">
-            <div class="input-group">
-              <input style="width: 16rem;"  type="text" class="form-control @error('serie') is-invalid @enderror" placeholder="Numéro de série" name="serie" id="serie" required><br>
-              @error('serie')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-           
-          </div>
-            </div>
-          </div>
-
-         
-    </div>
-
-
-
-
-          
     
-          <div class="row mb-0 mt-4">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                        @if($errors->any())
+
+    <section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Identification</h2>
+
+              <form method="POST" action="{{url('/home')}}">
+                @csrf
+                <div class="form-outline mb-4">
+                  <input type="password" id="id_operateur" name="id_operateur" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example1cg">Id Operateur</label>
+                </div>
+
+                @foreach($users as $user)
+                <div class="form-outline mb-4">
+                  <textarea type="search" id="splice_name" name="splice_name" class="form-control form-control-lg" > {{$user->splice_name}}
+                  </textarea>
+                  <label class="form-label" for="form3Example3cg">Splice name</label>
+                </div>
+
+               
+
+                <!--  -->
+
+                
+
+                <div class="form-outline mb-4">
+                  <textarea type="text" id="location" name="location" class="form-control form-control-lg" >{{$user->location}}</textarea>
+                  <label class="form-label" for="form3Example4cg">Location</label>
+                </div>
+              @endforeach
+                <div class="form-outline mb-4">
+                  <input type="text" id="quantite" name="quantite" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cdg">Quantite</label>
+                </div>
+
+                
+                <div class="d-flex justify-content-center">
+                  <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                </div>
+                @if($errors->any())
                             {!! implode('', $errors->all('<div>:message</div>')) !!}
                         @endif
-        </form>
-        </div>
-    </div>
-  </div>
-  </div>
-  </div>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6 grid-margin stretch-card mt-4">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Donnée de circuit</h4>
-       
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-            <tr>
-            
-                <th>Circuit</th>
-                <th>Emplacement</th>
-                <th>Quantité</th>
-                <th>Date</th>
-             
-              </tr>
-            </thead>
-            <tbody>
-           
-            </tbody>
-          </table>
+
+
+              </form>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-
-</body>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</section>
 
 
 
-<script type="text/javascript">
-    $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-</script>
 
+    </body>
 
-<script>
-    $(document).ready(function () {
-        $('#wireName').on('keyup', function(){
-            var value = $(this).val();
-            
-             $.ajax({
-                type: "get",
-                url: "/search",
-                data: {'search':value},
-                success: function (data) {
-                    $('.mycard').html(data);
-                   //console.log(data);
-                  
-                }
-            }); 
-        });
-    });
-</script>
-
+</html>

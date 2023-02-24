@@ -40,39 +40,21 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Identification</h2>
 
-              <form method="POST" action="{{url('/home')}}">
+              <form method="GET" action="{{url('/home/search')}}">
                 @csrf
-                <div class="form-outline mb-4">
-                  <input type="text" id="id_operateur" name="id_operateur" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example1cg">Id Operateur</label>
-                </div>
+                
 
                 <div class="form-outline mb-4">
-                  <input type="search" id="splice_name" name="splice_name" class="form-control form-control-lg" /> 
+                  <input type="search" id="splice_name" name="search_name" class="form-control form-control-lg" /> 
                   
                   <label class="form-label" for="form3Example3cg">Splice name</label>
                 </div>
 
-               
-
-                <!--  -->
-
-                
-
-                <div class="form-outline mb-4">
-                  <input type="text" id="location" name="location" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cg">Location</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="text" id="quantite" name="quantite" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cdg">Quantite</label>
-                </div>
 
                 
                 <div class="d-flex justify-content-center">
                   <button type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Chercher</button>
                 </div>
                 @if($errors->any())
                             {!! implode('', $errors->all('<div>:message</div>')) !!}
@@ -94,31 +76,4 @@
 
     </body>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
-
-<script type="text/javascript">
-    $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-</script>
-
-
-<script>
-    $(document).ready(function () {
-        $('#wireName').on('keyup', function(){
-            var value = $(this).val();
-            
-             $.ajax({
-                type: "get",
-                url: "/home",
-                data: {'search':value},
-                success: function (data) {
-                    $('.form-control').html(data);
-                  //console.log(data);
-                  
-                }
-            }); 
-        });
-    });
-</script>
 </html>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Mpdels\location;
+use App\Models\location;
 use Illuminate\Http\Request;
 use DB;
 
@@ -15,7 +15,15 @@ class LocationController extends Controller
         return view('search');
     }
 
+
     public function search(Request $request)
+    {
+        $get_name=$request->search_name;
+        $users=location::where('splice_name', 'LIKE' ,'%'.$get_name.'%')->get();
+        return view('search',compact('users'));
+    }
+
+   /* public function search(Request $request)
     {
         
 
@@ -38,7 +46,7 @@ class LocationController extends Controller
 
        return view('/search');
         
-    }
+    }*/
 
    
     /*public function search(Request $request)
