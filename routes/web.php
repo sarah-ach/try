@@ -2,6 +2,8 @@
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\TrasabiliteController;
 use Illuminate\Support\Facades\Route;
+use App\Models\trasabilite;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +40,10 @@ Route::controller(LocationController::class)->group(function(){
 });
 
 Route::get('/home/search',[App\Http\Controllers\LocationController::class, 'search']);
+
+Route::get('/qrcode',function(Request $request){
+    $data = new trasabilite;
+   
+        $data = $request->splice_name;
+    return QrCode::size(300)->generate($data);
+});

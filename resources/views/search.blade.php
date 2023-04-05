@@ -40,10 +40,10 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Identification</h2>
 
-              <form method="POST" action="{{url('/home')}}">
+              <form method="GET" action="{{url('/qrcode')}}">
                 @csrf
                 <div class="form-outline mb-4">
-                  <input type="password" id="id_operateur" name="id_operateur" class="form-control form-control-lg" />
+                  <input type="text" id="id_operateur" name="id_operateur" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example1cg">Id Operateur</label>
                 </div>
 
