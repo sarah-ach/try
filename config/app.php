@@ -198,6 +198,9 @@ return [
 //code QR
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
+//code pdf
+        Barryvdh\DomPDF\ServiceProvider::class,
+
     ],
 
     /*
@@ -215,6 +218,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
 
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ])->toArray(),
 

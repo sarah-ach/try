@@ -72,9 +72,12 @@
 
                 
                 <div class="d-flex justify-content-center">
-                  <button type="submit"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
-                </div>
+                <a href="{{url('/qrcode')}}"> <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button></a> 
+                  </br>
+                    <a href="{{url('/qrcode')}}"> <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">download</button></a> </br>
+                    
                 @if($errors->any())
                             {!! implode('', $errors->all('<div>:message</div>')) !!}
                         @endif
